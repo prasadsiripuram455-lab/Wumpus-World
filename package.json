@@ -1,0 +1,20 @@
+{
+  "name": "wumpus-world-web-app",
+  "version": "1.0.0",
+  "description": "Wumpus World AI simulation web application.",
+  "main": "wumpus.js",
+  "scripts": {
+    "start": "serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wumpus",
+    "ai",
+    "simulation",
+    "web"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

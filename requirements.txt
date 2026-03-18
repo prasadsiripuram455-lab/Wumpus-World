@@ -1,0 +1,2 @@
+# No Python dependencies are currently required for this pure frontend web project.
+# Use package.json for any Node.js/frontend dependencies.

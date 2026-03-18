@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wumpus World Simulation | AI Agents Study</title>
+    <meta name="description"
+        content="A comprehensive guide and simulation framework for the Wumpus World AI case study. Explore environments, architecture, and various search algorithms.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="icon">🎮</span>
+            <h1>Wumpus World AI</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#environment">Environment</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#agents">The Search Agents</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="about">
+        <div class="hero-content fade-in">
+            <h2 class="title">Navigate Reality. <span>Find the Gold.</span></h2>
+            <p class="subtitle">A classic Artificial Intelligence environment for studying intelligent agents,
+                decision-making, and advanced search algorithms.</p>
+            <div class="hero-buttons">
+                <a href="#environment" class="btn primary-btn">Explore Environment</a>
+                <a href="#agents" class="btn secondary-btn">View Algorithms</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="environment" class="env-section fade-in">
+        <div class="section-header">
+            <h2>The 5x5 Grid Environment</h2>
+            <p>An intricate grid where danger and treasure coexist. The agent relies on sensory inputs to make rational
+                decisions.</p>
+        </div>
+
+        <div class="env-container">
+            <div class="game-wrapper">
+                <div class="game-status glass" id="game-status">Find the Gold! Avoid the Wumpus and Pits.</div>
+                <div class="grid-board" id="game-board">
+                    <!-- JS will populate the 5x5 grid -->
+                </div>
+                <div class="game-controls glass">
+                    <button class="btn primary-btn" id="restart-btn">Restart Game</button>
+                    <div class="d-pad">
+                        <button class="d-btn" id="btn-up">▲</button>
+                        <div class="d-pad-row">
+                            <button class="d-btn" id="btn-left">◀</button>
+                            <button class="d-btn" id="btn-down">▼</button>
+                            <button class="d-btn" id="btn-right">▶</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="env-details">
+                <div class="card glass">
+                    <h3>Game Elements</h3>
+                    <ul>
+                        <li><span class="dot agent"></span> <strong>Agent (A):</strong> Starts at safe cell (0,0), can
+                            move up, down, left, right.</li>
+                        <li><span class="dot gold"></span> <strong>Gold (G):</strong> Ultimate goal. Reaching it ends
+                            the game successfully.</li>
+                        <li><span class="dot wumpus"></span> <strong>Wumpus (W):</strong> A deadly monster. Encountering
+                            it ends the game.</li>
+                        <li><span class="dot pit"></span> <strong>Pits (P):</strong> Bottomless traps. Falling in equals
+                            game over.</li>
+                    </ul>
+                </div>
+                <div class="card glass">
+                    <h3>Sensory Signals</h3>
+                    <ul>
+                        <li>💨 <strong>Breeze:</strong> Indicates a Pit is in an adjacent cell.</li>
+                        <li>👃 <strong>Smell:</strong> Indicates the Wumpus is nearby.</li>
+                        <li>✨ <strong>Glitter:</strong> Indicates the presence of Gold in the current cell.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="arch-section fade-in">
+        <div class="section-header">
+            <h2>System Architecture</h2>
+            <p>Four interconnected modules coordinate to simulate the Wumpus World problem.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="card glass interactive">
+                <div class="icon-wrapper">🌍</div>
+                <h3>Environment Module</h3>
+                <p>Generates the 5×5 grid and randomly places objects such as the Wumpus, pits, and gold in different
+                    cells.</p>
+            </div>
+            <div class="card glass interactive">
+                <div class="icon-wrapper">🤖</div>
+                <h3>Agent Module</h3>
+                <p>Responsible for navigating the grid and making decisions based strictly on immediate sensor
+                    information.</p>
+            </div>
+            <div class="card glass interactive">
+                <div class="icon-wrapper">🧠</div>
+                <h3>Search Algorithms</h3>
+                <p>Helps the agent evaluate state spaces and determine possible paths to safely reach the goal state
+                    computationally.</p>
+            </div>
+            <div class="card glass interactive">
+                <div class="icon-wrapper">⚡</div>
+                <h3>Decision Module</h3>
+                <p>Selects the best optimal path among available options, guiding the agent toward gold while mitigating
+                    hazard risks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agents" class="agents-section fade-in">
+        <div class="section-header">
+            <h2>The Search Agents</h2>
+            <p>Four students implemented unique optimization and search algorithms to tackle the Wumpus problem.</p>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="student1">Student 1 <span>(BFS, Bidi, SA)</span></button>
+                <button class="tab-btn" data-tab="student2">Student 2 <span>(DFS, Greedy, GA)</span></button>
+                <button class="tab-btn" data-tab="student3">Student 3 <span>(UCS, A*, Minimax)</span></button>
+                <button class="tab-btn" data-tab="student4">Student 4 <span>(IDS, RBFS, CSP)</span></button>
+            </div>
+
+            <div class="tab-content active" id="student1">
+                <div class="algo-cards">
+                    <div class="card glass">
+                        <h3>Breadth First Search (BFS)</h3>
+                        <div class="tag">O(b^d) Time</div>
+                        <p>Explores nodes level by level using a queue (FIFO). Guarantees the shortest path in an
+                            unweighted graph and ensures all nodes at the current depth are verified before advancing.
+                            It is a <strong>complete</strong> algorithm.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Bidirectional Search</h3>
+                        <div class="tag">O(b^(d/2)) Time</div>
+                        <p>Runs two searches simultaneously: forward from the start and backward from the goal. By
+                            meeting in the middle, it drastically reduces the search space and improves efficiency over
+                            standard BFS.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Simulated Annealing</h3>
+                        <div class="tag">Optimization</div>
+                        <p>A probabilistic algorithm inspired by metallurgy (heating and cooling). Initially explores
+                            many paths randomly using high "temperature," gracefully converging to a near-optimal
+                            solution to escape local optima.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="student2">
+                <div class="algo-cards">
+                    <div class="card glass">
+                        <h3>Depth First Search (DFS)</h3>
+                        <div class="tag">O(b^m) Time</div>
+                        <p>Explores deeply down a single branch before backtracking, utilizing a stack (LIFO) or
+                            recursion. High memory efficiency, though it does not guarantee finding the shortest path
+                            first.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Greedy Best-First Search</h3>
+                        <div class="tag">Heuristic Based</div>
+                        <p>Selects the node appearing closest to the goal using a <em>Manhattan distance</em> heuristic.
+                            Extremely fast processing speed, but often bypasses the true optimal route by ignoring
+                            actual path costs.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Genetic Algorithm</h3>
+                        <div class="tag">Evolutionary</div>
+                        <p>A population-based approach using selection, crossover, and mutation to iteratively improve
+                            random starting solutions over generations. Excellent for highly complex, vast search
+                            spaces.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="student3">
+                <div class="algo-cards">
+                    <div class="card glass">
+                        <h3>Uniform Cost Search (UCS)</h3>
+                        <div class="tag">Optimal</div>
+                        <p>Expands nodes strictly by the lowest cumulative path cost using a priority queue. Behaves
+                            identically to Dijkstra’s algorithm and guarantees the most optimal path when all step costs
+                            are positive.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>A* Algorithm</h3>
+                        <div class="tag">f(n) = g(n) + h(n)</div>
+                        <p>The gold standard for pathfinding. Intelligently combines the known cost to reach a node
+                            <code>g(n)</code> with an estimated heuristic cost to the goal <code>h(n)</code>. Assures
+                            optimal routing and maximal efficiency.
+                        </p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Minimax Algorithm</h3>
+                        <div class="tag">Adversarial</div>
+                        <p>Primarily used in game theory. Evaluates subsequent moves assuming the "opponent" plays
+                            optimally. It seeks to maximize the agent's gain while fiercely minimizing the environment's
+                            threat potential.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="student4">
+                <div class="algo-cards">
+                    <div class="card glass">
+                        <h3>Iterative Deepening (IDS)</h3>
+                        <div class="tag">DFS + BFS Hybrid</div>
+                        <p>Executes repeated DFS passes with incrementally expanding depth limits. Retains the
+                            extraordinary memory efficiency of DFS whilst matching the optimal, complete guarantee of
+                            BFS.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Recursive Best First (RBFS)</h3>
+                        <div class="tag">Memory-efficient A*</div>
+                        <p>Explores promising nodes strictly guided by A*'s evaluation function <code>f(n)</code>, while
+                            operating via lightweight recursion and limited tracking memory instead of expanding
+                            enormous priority queues.</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Constraint Satisfaction (CSP)</h3>
+                        <div class="tag">Logical Reasoning</div>
+                        <p>Translates sensor triggers (Breeze, Smell) into complex inter-variable logical constraints
+                            over a domain of cells. Heavily employs constraint propagation and systematic backtracking
+                            search.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Wumpus World Simulation AI Capstone Project.</p>
+        <p class="small">Built dynamically utilizing all discussed Artificial Intelligence agents.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
