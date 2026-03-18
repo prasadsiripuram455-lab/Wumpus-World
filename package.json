@@ -2,7 +2,7 @@
   "name": "wumpus-world-web-app",
   "version": "1.0.0",
   "description": "Wumpus World AI simulation web application.",
-  "main": "wumpus.js",
+  "main": "script.js",
   "scripts": {
     "start": "serve .",
     "test": "echo \"Error: no test specified\" && exit 1"
